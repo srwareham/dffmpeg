@@ -73,5 +73,11 @@ if [ "$failure_encountered" == True ]
 then
   exit 1
 else
+  # Runs the docker container with ffmpeg as its entrypoint
+  # Run configurations: 
+  # Mount the input volume as read only
+  # Mount the output volume as rw (overwrites input ro if overlapping)
+  # Executes ffmpeg with the same uid and gid as the caller
+  # Passes all arguments to the guest container (while appropriately modifying input and output paths)
   docker run --rm -it -v "$(dirname "$(realpath "$host_input_path")")":"$guest_input_dir":ro -v "$(dirname "$(realpath "$host_output_path")")":"$guest_output_dir" -u $(id -u):$(id -g) "$dffmpeg_image_name" "${guest_args[@]}"
 fi
