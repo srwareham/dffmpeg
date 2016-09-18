@@ -1,2 +1,0 @@
-# dffmpeg
-Dockerized ffmpeg
