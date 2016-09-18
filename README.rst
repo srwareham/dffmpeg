@@ -4,9 +4,6 @@ dffmpeg
 
 dffmpeg is a dockerized version of ffmpeg. With dffmpeg, any system that supports docker can have a fully functioning version of ffmpeg without having to install any dependencies (besides docker).
 
-.. contents:: Table of Contents
-   :depth: 2
-
 
 How Does dffmpeg Work?
 ======================
