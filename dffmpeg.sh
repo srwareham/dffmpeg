@@ -15,6 +15,13 @@ guest_output_dir=/tmp/dffmpeg_out
 
 failure_encountered=False
 
+if [ $# -eq 0 ]
+then
+  echo "ERROR: at least two inputs required! Must pass an input file (preceded by "-i") and an output path"
+  failure_encountered=True
+fi
+
+
 # Loop through args to determine input and output paths
 host_input_path_is_next=False
 for var in "$@"
