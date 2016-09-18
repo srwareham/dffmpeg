@@ -13,6 +13,8 @@ guest_input_dir=/tmp/dffmpeg_in
 # The path inside the guest container that will be used as a mountpoint for the host's output (should never need modification)
 guest_output_dir=/tmp/dffmpeg_out
 
+failure_encountered=False
+
 # Loop through args to determine input and output paths
 host_input_path_is_next=False
 for var in "$@"
@@ -46,6 +48,23 @@ do
   guest_args+=("$guest_arg")
 done
 
-# TODO: Consider adding graceful termination if input or output paths are not valid
 
-docker run --rm -it -v "$(dirname "$(realpath "$host_input_path")")":"$guest_input_dir":ro -v "$(dirname "$(realpath "$host_output_path")")":"$guest_output_dir" -u $(id -u):$(id -g) "$dffmpeg_image_name" "${guest_args[@]}"
+# Terminate with error if either host input path or host output dir are invalid
+
+if [ ! -f "$host_input_path" ]
+then
+  echo "ERROR: input path \""$host_input_path"\" does not exist!"
+  failure_encountered=True
+fi
+if [ ! -d "$(dirname "$host_output_path")" ]
+then
+  echo "ERROR: output directory \""$(dirname "$host_output_path")" does not exist!"
+  failure_encountered=True
+fi
+
+if [ "$failure_encountered" == True ]
+then
+  exit 1
+else
+  docker run --rm -it -v "$(dirname "$(realpath "$host_input_path")")":"$guest_input_dir":ro -v "$(dirname "$(realpath "$host_output_path")")":"$guest_output_dir" -u $(id -u):$(id -g) "$dffmpeg_image_name" "${guest_args[@]}"
+fi
