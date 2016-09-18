@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t arch-ffmpeg
+docker build -t arch-ffmpeg .
