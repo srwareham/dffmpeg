@@ -44,9 +44,9 @@ Default Install Steps
     cd dffmpeg
     # Build the default arch linux image with the tag "arch-ffmpeg"
     ./build.sh
-    # Move dffmpeg.sh to a location that *should* be in the default $PATH setup for most systems 
+    # Copy dffmpeg.sh to a location that *should* be in the default $PATH setup for most systems 
     # (Also removes the file extension following unix executable naming conventions)
-    mv dffmpeg.sh /usr/local/bin/dffmpeg
+    cp dffmpeg.sh /usr/local/bin/dffmpeg
 
 Note: the ./build.sh step will take awhile as it creates a new docker image by:
 
@@ -60,7 +60,7 @@ TL;DR
 
 .. code-block:: bash
 
-    git clone https://github.com/srwareham/dffmpeg.git && cd dffmpeg && ./build.sh && mv dffmpeg.sh /usr/local/bin/dffmpeg
+    git clone https://github.com/srwareham/dffmpeg.git && cd dffmpeg && ./build.sh && cp dffmpeg.sh /usr/local/bin/dffmpeg
 
 Usage
 =====
