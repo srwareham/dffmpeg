@@ -7,7 +7,7 @@
 # Allows for use of ffmpeg with limited-to-no overhead without any host system dependencies besides docker
 
 # The name of the docker image which has ffmpeg as its entrypoint
-dffmpeg_image_name=arch-ffmpeg
+dffmpeg_image_name=alpine-ffmpeg
 # The path inside the guest container that will be used as a mountpoint for the host's input (should never need modification)
 guest_input_dir=/tmp/dffmpeg_in
 # The path inside the guest container that will be used as a mountpoint for the host's output (should never need modification)
