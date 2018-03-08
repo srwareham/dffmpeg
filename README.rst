@@ -21,6 +21,17 @@ Features
 - No compiling/gathering dependencies: as a turnkey solution, all you have to do is run the initial setup script to have access to :code:`ffmpeg`
 
 
+Usage
+=====
+
+Once installed via the steps below, :code:`dffmpeg` is called exactly the same as :code:`ffmpeg`:
+
+.. code-block:: bash
+
+    $ dffmpeg -i input.mp4 -vcodec libx264 output.mp4
+    $ dffmpeg -i /path/to/input.mkv -vcodec libx264 -acodec libfdk_aac /path/to/output.mkv
+
+
 How Does dffmpeg Work?
 ======================
 
@@ -103,18 +114,6 @@ Note:
 
 1. The name of your new image *must* be the same as the directory that contains it
 2. build.sh will be executed from within the directory that contains it (i.e., build.sh can take the form :code:`docker build -t $image_name .`
-
-
-
-Usage
-=====
-
-Once installed via the steps above, :code:`dffmpeg` is called exactly the same as :code:`ffmpeg`:
-
-.. code-block:: bash
-
-    $ dffmpeg -i input.mp4 -vcodec libx264 output.mp4
-    $ dffmpeg -i /path/to/input.mkv -vcodec libx264 -acodec libfdk_aac /path/to/output.mkv
 
 
 Limitations
