@@ -1,7 +1,10 @@
-FROM base/archlinux
+FROM archlinux/base
 
 # Create an up-to-date full arch env
 RUN pacman --noconfirm -Syy && pacman --noconfirm -S archlinux-keyring && pacman --noconfirm -S pacman && pacman-db-upgrade && pacman --noconfirm -Syu && pacman --noconfirm -S base-devel
+
+# Set environment to compile multi-threaded
+RUN export cores=$(nproc); sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j${cores}\"/g" /etc/makepkg.conf; unset cores
 
 # Prepare image for yaourt
 # installs git, allows sudo to be run within Docker (thanks to https://bit-traveler.blogspot.com/2015/11/sudo-error-within-docker-container-arch.html)
