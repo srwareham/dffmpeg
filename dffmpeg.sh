@@ -31,7 +31,10 @@ do
   host_output_path="$var"
   if [ "$host_input_path_is_next" == "True" ]
   then
-    host_input_paths[$var]="$guest_input_dir/$(cat /proc/sys/kernel/random/uuid)"
+    if ! [[ "$var" =~ ^[0-9a-zA-Z]+://.+ ]]
+    then
+      host_input_paths[$var]="$guest_input_dir/$(cat /proc/sys/kernel/random/uuid)"
+    fi
     host_input_path_is_next=False
   fi
   if [ "$var" == "-i" ]
