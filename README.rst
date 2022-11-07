@@ -135,7 +135,7 @@ I personally have no use for 1, as it is fairly easy to simply enter the relevan
 Space/Feature Set Balance
 -------------------------
 
-Due to the licensing on many popular feature implementations, any version of :code:`ffmpeg` you install  will (irrespective of the use of docker) will require you to choose between install speed, install size, and feature set. In practice, you can choose :code:`ffmpeg`: 
+Due to the licensing on many popular libraries that can be used by ffmpeg, any version of :code:`ffmpeg` you install will require you to choose between install speed, install size, and feature set. In practice, you can choose :code:`ffmpeg`: 
 
 1. Made quickly with some feature limitations and a relatively small install size; or
 2. Made slowly for:
@@ -166,7 +166,7 @@ Provided Images
 
 Alpine Linux (Default)
 ----------------------
-The default :code:`ffmpeg` container for this repositiory is uses the lightweight `alpine linux <https://alpinelinux.org/>`_ distribution and its `ffmpeg <https://pkgs.alpinelinux.org/package/v3.3/main/x86/ffmpeg>`_ package.
+The default :code:`ffmpeg` container for this repository is uses the lightweight `alpine linux <https://alpinelinux.org/>`_ distribution and its `ffmpeg <https://pkgs.alpinelinux.org/package/v3.3/main/x86/ffmpeg>`_ package.
 
 Size
 ++++
@@ -249,3 +249,5 @@ Audio Codecs
 * libmp3lame
 * flac
 * alac
+
+
